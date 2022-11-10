@@ -1,0 +1,29 @@
+<template>
+  <h1>Cad Clientes</h1>
+  <div v-for="cli in clientes" v-bind:key="cli.id">
+    <cardCliente :idCliente="cli.id"/>
+  </div>
+  <q-btn to="/cadCliente" label="cadastrar Cliente" />
+</template>
+
+<script>
+import { useStore } from "src/stores/example-store"
+import cardCliente from "../components/cardCliente.vue"
+export default {
+  components:{cardCliente },
+  data(){
+    return {
+      clientes:[]
+    }
+  },
+  created() {
+    let store = useStore()
+    this.clientes = store.clientes
+  }
+
+
+};
+</script>
+
+<style>
+</style>
