@@ -3,6 +3,10 @@
   <div v-for="cli in clientes" v-bind:key="cli.id">
     <cardCliente :idCliente="cli.id"/>
   </div>
+  <ul v-for="cli in clientes" v-bind:key="cli.id">
+    <li>({{cli.id}}) {{cli.nome}}</li>
+
+  </ul>
   <q-btn to="/cadCliente" label="cadastrar Cliente" />
 </template>
 

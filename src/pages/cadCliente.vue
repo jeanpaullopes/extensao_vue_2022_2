@@ -15,6 +15,7 @@
 
 <script>
 import {useStore} from "../stores/example-store"
+import servicos from "src/services/servicos"
 export default {
   data(){
     return {
@@ -48,6 +49,7 @@ export default {
         }
       }
       store.addCliente(cli)
+      servicos.saveCliente(cli)
       this.$router.push("/pg2")
 
     }
