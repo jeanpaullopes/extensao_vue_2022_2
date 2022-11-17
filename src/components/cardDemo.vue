@@ -66,11 +66,5 @@ export default {
 </script>
 
 <style>
-.fundogif {
-  background-image: url("~assets/textura-gif-web.gif");
-  background-size: cover;
-}
-.fundoDark {
-  background-color:slategrey
-}
+
 </style>
