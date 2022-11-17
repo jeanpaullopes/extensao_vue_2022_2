@@ -3,14 +3,14 @@
     {
       "id": 1,
       "descricao": "caixa de bombom",
-      "preco": 10.5,
+      "preco": "14.56",
       "qtd": 100,
       "imgUrl": ""
     },
     {
       "id": 2,
       "descricao": "Leite integral",
-      "preco": 8.5,
+      "preco": "12.00",
       "qtd": 100,
       "imgUrl": ""
     },

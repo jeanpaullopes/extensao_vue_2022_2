@@ -1,42 +1,76 @@
 <template>
   <q-card class="my-card bg-secondary text-white shadow-8 q-ml-xl q-mt-md" style="width: 50%">
       <q-card-section>
-        <div class="text-h6">{{dado.titulo}}</div>
-        <div class="text-subtitle2" v-show="dado.nome!= undefined">by {{dado.nome}}</div>
+        <div class="text-h6">{{edProduto.descricao}}</div>
+        <div class="text-subtitle2" > código: {{edProduto.id}}</div>
       </q-card-section>
 
       <q-card-section>
-        {{ lorem }}
+        <h5> R$ {{edProduto.preco}}</h5>
+        <q-input v-show="editando" v-model="preco" mask="#.##"
+        fill-mask="0" reverse-fill-mask label="Preço"/>
       </q-card-section>
 
       <q-separator dark />
 
       <q-card-actions>
-        <q-btn flat>ação 1</q-btn>
-        <q-btn flat>cancelar</q-btn>
+        <q-btn flat v-show="!editando" @click="editar">Atualizar Preço</q-btn>
+        <q-btn flat v-show="editando" @click="gravar">Gravar</q-btn>
+        <q-btn flat v-show="editando" @click="cancelar">cancelar</q-btn>
       </q-card-actions>
     </q-card>
 </template>
 
 <script>
+import servicos from 'src/services/servicos'
 export default {
-  data(){
+  data() {
     return {
-      dado: Object
+      edProduto: Object,
+      editando: false,
+      preco: Number
     }
   },
   props:{
-    titulo: String,
-    nome: String
+    produto: Object
   },
   created() {
-    this.dado.titulo = this.titulo+ "("+this.nome+")"
-    this.dado.nome = this.nome
+    this.edProduto = this.produto
+  },
+  methods:{
+    editar() {
+      this.preco = this.edProduto.preco
+      this.editando = true
+    },
+    cancelar() {
+      this.editando = false
+
+    },
+    gravar() {
+    //  let obj = {
+    //id: this.edProduto.id,
+    //descricao: this.edProduto.descricao,
+    //preco: this.preco,
+    //qtd: this.edProduto.qtd,
+    //imgUrl: ""
+    //}
+    this.edProduto.preco = this.preco
+      this.editando = false
+      servicos.updateProduto(this.edProduto)
+//      servicos.updateProduto(obj)
+
+    }
   }
 
 }
 </script>
 
 <style>
-
+.fundogif {
+  background-image: url("~assets/textura-gif-web.gif");
+  background-size: cover;
+}
+.fundoDark {
+  background-color:slategrey
+}
 </style>

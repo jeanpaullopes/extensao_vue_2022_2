@@ -1,5 +1,6 @@
 <template>
-  <h4>Cadastro de Cliente</h4>
+  <q-card class="q-ma-md q-pl-xl q-pr-xl q-pt-xs q-pb-xs">
+  <h4 class="minhaClasse">Cadastro de Cliente</h4>
   <q-input label="Nome" v-model="vnome"/>
 
   <q-input type="email" label="email" v-model="vemail"/>
@@ -11,6 +12,7 @@
   <q-input label="Cidade" v-model="vcidade"/>
   <q-input label="UF" mask="AA" v-model="vuf"/>
   <q-btn label="gravar" @click="gravar"/>
+</q-card>
   </template>
 
 <script>
@@ -59,5 +61,8 @@ export default {
 </script>
 
 <style>
-
+.minhaClasse {
+  background-color: blueviolet;
+  color:yellow;
+}
 </style>

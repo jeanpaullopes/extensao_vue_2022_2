@@ -1,5 +1,7 @@
 <template>
-  <q-card class="my-card bg-primary text-white shadow-8 q-ml-xl q-mt-md" style="width: 50%">
+  <q-card :id="card" class="my-card fundoDark text-white shadow-8 q-ml-xl q-mt-md" style="width: 50%"
+  @mouseover="mouseover" @mouseout="mouseout"
+  >
       <q-card-section>
         <div class="text-h6">{{cliente.nome}}</div>
         <div class="text-subtitle2">id {{cliente.id}}</div>
@@ -33,11 +35,27 @@ export default {
   created() {
     let store = useStore()
     this.cliente = store.getClienteByID(this.idCliente)
+  },
+  computed:{
+    card() {return "card"+this.idCliente}
+  },
+  methods: {
+    mouseover() {
+      document.getElementById("card"+this.idCliente).classList.add('fundoGif')
+    },
+    mouseout() {
+      document.getElementById("card"+this.idCliente).classList.remove('fundoGif')
+    }
   }
 
 }
 </script>
 
 <style>
-
+.fundoDark {
+  background-color: black;
+}
+.fundoGif {
+  background-image: url('../assets/textura.gif');
+}
 </style>
